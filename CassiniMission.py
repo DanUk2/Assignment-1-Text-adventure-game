@@ -1,5 +1,5 @@
 # The Cassini mission
-# Version 6
+# Version 7
 # Daniel Hitchcock
 # 27/01/2019
 import time
@@ -11,10 +11,10 @@ hoursLeft = 5
 correctFormula = {"Magnesium" : 2, "Barium" : 1, "Sodium Chloride" : 1, "Phosphorous" : 3}
 usrFormula = {"Magnesium" : 0, "Barium" : 0, "Sodium Chloride" : 0, "Phosphorous" : 0}
 global choicePath3
-choicePath3 = 1
+choicePath3 = 0
 global leoChoice
 global pandoraChoice
-leoChoice = 1
+leoChoice = 0
 pandoraChoice = 0
 
 def intro():
@@ -95,6 +95,7 @@ def part1():
     time.sleep(2)
     print( name + " get in, you'll be driving")
 
+
 def inv1():
     item = ""
     while item not in inv:
@@ -137,6 +138,7 @@ def chooseHelp():
     elif helpLeo == "yes":
         return helpLeo
 
+
 def rover1():
     print()
     time.sleep(1)
@@ -172,6 +174,7 @@ def rover1():
     checkPath(choice)
     print("Hours Left [", hoursLeft, "]")
     time.sleep(2)
+
 
 def rover2():
     print("Leo: Okay can't see anything ahead.")
@@ -228,6 +231,7 @@ def rover2():
     time.sleep(2)
     print("Hours Left [", hoursLeft, "]")
     timeCheck()
+
 
 def rover3():
     print()
@@ -428,11 +432,12 @@ def bunker2():
     print()
     chooseSave()
 
+
 def bunkerLeo():
     print("*You slam the door shut*")
     time.sleep(2)
     print()
-    item2()
+    leoItem()
     print()
     print("*Leo welds the door shut*")
     print()
@@ -447,7 +452,7 @@ def bunkerLeo():
         time.sleep(2)
         print(" While you were gone we found out that we're all infected")
         time.sleep(2)
-        print(" From the moment we stepped foot on this goddamn planet")
+        print(" From the moment we stepped foot on this goddamn moon")
         time.sleep(3)
         print(" Contact with a host just speeds up the infection")
         time.sleep(2)
@@ -517,7 +522,7 @@ def leoFormula():
             time.sleep(2)
             print(" Apollo told us about the virus outbreak in the lab")
             time.sleep(2)
-            print(" He promised Pandora and I a lot of money if we helped him")
+            print(" He promised Pandora and I a lot of money if we helped him find Sandra")
             time.sleep(2)
             print(" He told us he didn't want you to know")
             time.sleep(2)
@@ -550,7 +555,6 @@ def leoFormula():
             print(" So what do we do now?")
             endingLeo1()
     return
-
 
 
 def leoAttack():
@@ -595,6 +599,7 @@ def leoAttack():
     print("*You use the cure*")
     endingLeo3()
 
+
 def endingLeo1():
     print()
     time.sleep(3)
@@ -626,7 +631,8 @@ def endingLeo1():
     print("[GAME OVER]")
     print()
     time.sleep(2)
-    print("Ending Grade: [D]")
+    print("Ending Grade: [C]")
+
 
 def endingLeo2():
     print()
@@ -662,6 +668,7 @@ def endingLeo2():
     print()
     time.sleep(2)
     print("Ending Grade: [A]")
+
 
 def endingLeo3():
     print()
@@ -718,7 +725,8 @@ def chooseWeapon():
         print()
         print("*That wont work here*")
 
-def item2():
+
+def leoItem():
     if "welding tool" in inv:
         print("Leo: Hand me your Welding Tool quick!")
         print()
@@ -732,7 +740,7 @@ def item2():
             print()
             print("Leo: Stop playing around!")
             print()
-            item2()
+            leoItem()
         elif welder == "welding tool":
             print()
             print("*Welding Tool removed from inventory*")
@@ -744,8 +752,435 @@ def item2():
         time.sleep(1)
         print(" Im going to weld the door shut")
 
+
+def pandoraItem():
+    if "welding tool" in inv:
+        print()
+        print("Pandora:", name, "get this door welded shut!")
+        time.sleep(2)
+        print(inv)
+        print()
+        welder = ""
+        while welder not in inv:
+            welder = input("Choose an Item: ").lower()
+        if welder != "welding tool":
+            print()
+            print("Pandora: We haven't got time for this!")
+            pandoraItem()
+        elif welder == "welding tool":
+            print()
+            print("*Welding Tool removed from inventory*")
+            inv.remove("welding tool")
+            print(inv)
+            pandora1()
+    else:
+        print("Pandora: Damn it!")
+        time.sleep(1)
+        print(" You gave Leo the welder to fix the rover")
+        time.sleep(2)
+        print(" Okay I'll try and hold the door shut for as long as I can")
+        time.sleep(3)
+        pandora2()
+
+
 def bunkerPandora():
     print("*You slam the door shut*")
+    print()
+    time.sleep(2)
+    print("Pandora: Help me hold them off!")
+    time.sleep(2)
+    print()
+    pandoraItem()
+
+
+def pandora1():
+    print()
+    print("Pandora: Okay that should hold them off for now")
+    time.sleep(2)
+    if choicePath3 == 2:
+        print()
+        print("Pandora: I need to tell you something")
+        time.sleep(2)
+        print(" While you were gone we found out that we're all infected")
+        time.sleep(2)
+        print(" From the moment we stepped foot on Titan")
+        time.sleep(3)
+        print(" Contact with a host just speeds up the infection")
+        time.sleep(2)
+        print(" In a matter of time we'll turn into those things")
+        time.sleep(2)
+        print(" Luckily I found the formula for a cure earlier")
+        time.sleep(2)
+    print(" We need to make that cure quick")
+    time.sleep(2)
+    print(" I have the formula here")
+    time.sleep(2)
+    print(correctFormula)
+    time.sleep(1)
+    pandoraFormula1()
+
+
+def pandora2():
+    print()
+    print("Pandora: We dont have long")
+    time.sleep(2)
+    if choicePath3 == 2:
+        print()
+        print("Pandora: I need you to listen to me")
+        time.sleep(2)
+        print(" You need to create a cure for the virus")
+        time.sleep(2)
+        print(" I have the formula just follow my instructions-")
+        time.sleep(3)
+        print()
+        print("*The infected burst through the door*")
+        print()
+        time.sleep(2)
+        print("Pandora: AHH!")
+        time.sleep(1)
+        print(" THEY GOT ME!")
+        time.sleep(1)
+        print(" QUICK, LOCK YOURSELF IN THE OFFICE!")
+        time.sleep(2)
+        print(" AHHHHHH!")
+        print()
+        time.sleep(2)
+        endingPandora1()
+    print()
+    print("Pandora: You're gonna have to remember that formula " + name)
+    time.sleep(2)
+    pandoraFormula2()
+
+
+def pandoraFormula1():
+    print()
+    print("[Add the correct number of chemicals in order]")
+    print()
+    usrFormula["Magnesium"] = 0
+    usrFormula["Barium"] = 0
+    usrFormula["Sodium Chloride"] = 0
+    usrFormula["Phosphorous"] = 0
+    print(usrFormula)
+    print()
+    mag = int(input("Magnesium: "))
+    usrFormula["Magnesium"] += mag
+    print(usrFormula)
+    print()
+    bar = int(input("Barium: "))
+    usrFormula["Barium"] += bar
+    print(usrFormula)
+    print()
+    sodium = int(input("Sodium Chloride: "))
+    usrFormula["Sodium Chloride"] += sodium
+    print(usrFormula)
+    print()
+    phos = int(input("Phosphorous: "))
+    usrFormula["Phosphorous"] += phos
+    print(usrFormula)
+    if usrFormula == correctFormula:
+        print()
+        print("[Cure Successful]")
+        print()
+        time.sleep(2)
+        print("Pandora: Okay that should do it")
+        time.sleep(2)
+        print(" Wait, there's only enough for one cure")
+        if pandoraChoice == 0:
+            print()
+            time.sleep(3)
+            print("Pandora: I need to tell you something " + name)
+            time.sleep(2)
+            print(" I knew what was waiting for us on Titan")
+            time.sleep(2)
+            print(" We all did, apart from you")
+            time.sleep(2)
+            print(" Apollo told us about the virus outbreak in the lab")
+            time.sleep(2)
+            print(" He promised Leo and I a lot of money if we helped him find Sandra")
+            time.sleep(3)
+            print(" He told us he didn't want you to know")
+            time.sleep(2)
+            print(" Probably because he knew you'd say no")
+            time.sleep(2)
+            print(" And we really needed you")
+            time.sleep(3)
+            print(" Take the cure " + name)
+            time.sleep(2)
+            print(" Even if I made it out, I could'nt live with the guilt")
+            time.sleep(4)
+            print()
+            print("*You use the cure*")
+            endingPandora3()
+        elif pandoraChoice == 1:
+            print()
+            time.sleep(3)
+            print("[Pandora remembered your decision]")
+            time.sleep(2)
+            print("Pandora:", name, ", I need to tell you something")
+            time.sleep(2)
+            print(" Im in love with you")
+            time.sleep(2)
+            print(" It's my fault were in this situation")
+            time.sleep(2)
+            print(" I haven't got time to explain but just know..")
+            time.sleep(2)
+            print(" Im sorry")
+            time.sleep(2)
+            print(" I cant watch you die " + name)
+            time.sleep(2)
+            print(" Take the cure")
+            time.sleep(2)
+            print(" Maybe in another life we can be together")
+            time.sleep(2)
+            print()
+            print("*You take the cure*")
+            print()
+            time.sleep(3)
+            endingPandora4()
+
+    else:
+        print()
+        print("[Cure Failed]")
+        print()
+        tryAgain = ""
+        while tryAgain != "yes":
+            tryAgain = input("Try Again? [Yes]: ")
+        if tryAgain == "yes":
+            leoFormula()
+    return
+
+
+def pandoraFormula2():
+        print()
+        print("[Add the correct number of chemicals in order]")
+        print()
+        usrFormula["Magnesium"] = 0
+        usrFormula["Barium"] = 0
+        usrFormula["Sodium Chloride"] = 0
+        usrFormula["Phosphorous"] = 0
+        print(usrFormula)
+        print()
+        mag = int(input("Magnesium: "))
+        usrFormula["Magnesium"] += mag
+        print(usrFormula)
+        print()
+        bar = int(input("Barium: "))
+        usrFormula["Barium"] += bar
+        print(usrFormula)
+        print()
+        sodium = int(input("Sodium Chloride: "))
+        usrFormula["Sodium Chloride"] += sodium
+        print(usrFormula)
+        print()
+        phos = int(input("Phosphorous: "))
+        usrFormula["Phosphorous"] += phos
+        print(usrFormula)
+        if usrFormula == correctFormula:
+            print()
+            print("[Cure Successful]")
+            print()
+            time.sleep(2)
+            print("Pandora: Did you make it?")
+            time.sleep(2)
+            print(" Okay hurry! I cant hold them off for much-")
+            print()
+            time.sleep(2)
+            print("*The infected burst through the door*")
+            print()
+            print("Pandora: AHH!")
+            time.sleep(1)
+            print(" THEY GOT ME!")
+            time.sleep(1)
+            print(" QUICK, LOCK YOURSELF IN THE OFFICE!")
+            time.sleep(2)
+            print(" AHHHHHH!")
+            print()
+            time.sleep(2)
+            print("*You take the cure*")
+            time.sleep(2)
+            endingPandora2()
+        else:
+            print()
+            print("[Cure Failed]")
+            print()
+            tryAgain = ""
+            while tryAgain != "yes" and tryAgain != "no":
+                tryAgain = input("Try Again? [Yes] or [No]: ")
+            if tryAgain == "yes":
+                leoFormula()
+            elif tryAgain == "no":
+                print()
+                print("Pandora: You can't remember it? " + name)
+                time.sleep(2)
+                print(" Okay the formula is-")
+                time.sleep(2)
+                print()
+                print("*The infected burst through the door*")
+                print()
+                time.sleep(2)
+                print("Pandora: AHH!")
+                time.sleep(1)
+                print(" THEY GOT ME!")
+                time.sleep(1)
+                print(" QUICK, LOCK YOURSELF IN THE OFFICE!")
+                time.sleep(2)
+                print(" AHHHHHH!")
+                print()
+                time.sleep(2)
+                endingPandora1()
+        return
+
+
+def endingPandora1():
+    print()
+    time.sleep(3)
+    print("*Still recording*")
+    print()
+    time.sleep(3)
+    print("*Sigh*")
+    time.sleep(1)
+    print("That's how it happened")
+    time.sleep(2)
+    print("Pandora died before she could tell me the formula")
+    time.sleep(2)
+    print("Its only a matter of time until I turn")
+    time.sleep(2)
+    print("Whoever finds this message, learn from our mistake")
+    time.sleep(2)
+    print("STAY AWAY FROM TITAN!")
+    time.sleep(2)
+    print("My nam-")
+    time.sleep(1)
+    print("My name is", name[:-3], "...")
+    time.sleep(2)
+    print("AHHHHH!")
+    time.sleep(2)
+    print()
+    print("*Recording Stopped*")
+    print()
+    time.sleep(2)
+    print("[GAME OVER]")
+    print()
+    time.sleep(2)
+    print("Ending Grade: [D]")
+
+
+def endingPandora2():
+    print()
+    time.sleep(3)
+    print("*Still recording*")
+    print()
+    time.sleep(3)
+    print("*Sigh*")
+    time.sleep(2)
+    print("That's how it happened")
+    time.sleep(2)
+    print("Pandora didn't make it")
+    time.sleep(3)
+    print("The cure has fought back the virus for now")
+    time.sleep(3)
+    print("However food supplies ran out")
+    time.sleep(2)
+    print("I have left the formula to the cure attached to this message")
+    time.sleep(3)
+    print("I hope you find this message before you send the next team here")
+    time.sleep(3)
+    print("It's too late for us")
+    time.sleep(2)
+    print("My name is " + name)
+    time.sleep(3)
+    print("Last survivor of the Cassini mission")
+    time.sleep(2)
+    print()
+    print("*Recording Stopped*")
+    print()
+    time.sleep(2)
+    print("[GAME OVER]")
+    print()
+    time.sleep(2)
+    print("Ending Grade: [B]")
+
+
+def endingPandora3():
+    print()
+    time.sleep(3)
+    print("*Still recording*")
+    print()
+    time.sleep(3)
+    print("*Sigh*")
+    time.sleep(2)
+    print("That's how it happened")
+    time.sleep(2)
+    print("Pandora sacrificed her self to by me more time")
+    time.sleep(3)
+    print("The cure has fought back the virus for now")
+    time.sleep(3)
+    print("However food supplies ran out")
+    time.sleep(2)
+    print("I have left the formula to the cure attached to this message")
+    time.sleep(3)
+    print("I hope you find this message before you send the next team here")
+    time.sleep(3)
+    print("It's too late for us")
+    time.sleep(2)
+    print("My name is " + name)
+    time.sleep(3)
+    print("Last survivor of the Cassini mission")
+    time.sleep(2)
+    print()
+    print("*Recording Stopped*")
+    print()
+    time.sleep(2)
+    print("[GAME OVER]")
+    print()
+    time.sleep(2)
+    print("Ending Grade: [A]")
+
+
+def endingPandora4():
+    print()
+    time.sleep(3)
+    print("*Still recording*")
+    print()
+    time.sleep(3)
+    print("*Sigh*")
+    time.sleep(2)
+    print("That's how it happened")
+    time.sleep(2)
+    print("My love, Pandora sacrificed herself for me")
+    time.sleep(3)
+    print("The cure has fought back the virus for now")
+    time.sleep(3)
+    print("However food supplies ran out")
+    time.sleep(2)
+    print("I have left the formula to the cure attached to this message")
+    time.sleep(3)
+    print("I hope you find this message before you send the next team here")
+    time.sleep(3)
+    print("It's too late for us")
+    time.sleep(2)
+    print("My name is " + name)
+    time.sleep(3)
+    print("Last survivor of the Cassini mission")
+    time.sleep(2)
+    print()
+    print("*Noise of car pulling up to bunker*")
+    time.sleep(2)
+    print()
+    print("What's that noise?")
+    time.sleep(2)
+    print("WAIT, TURN BACK,")
+    time.sleep(1)
+    print("TURN BACK!")
+    time.sleep(1)
+    print("*Recording Stopped*")
+    print()
+    time.sleep(2)
+    print("[GAME OVER]")
+    print()
+    time.sleep(2)
+    print("Ending Grade: [S]")
+
 
 def chooseSave():
     save = ""
@@ -787,6 +1222,7 @@ def chooseSave():
         time.sleep(2)
         print()
         bunkerPandora()
+
 
 def choosePath3():
     path3 = ""
@@ -945,6 +1381,7 @@ def checkPath3(chosenPath3):
             else:
                 return
 
+
 def document():
     print()
     print("*******************************************************************")
@@ -978,11 +1415,13 @@ def document():
     if done == "yes" or "y":
         return
 
+
 def choosePath():
     path = ""
     while path != "left" and path != "right":
         path = input("Choose a Path [Left] or [Right]: ").lower()
     return path
+
 
 def checkPath(chosenPath):
     print()
@@ -1162,6 +1601,7 @@ def chooseQuicksand():
         print()
         print("Leo: Sorry Sir! Yes Sir!")
 
+
 def chooseEngine():
     engine = ""
     global hoursLeft
@@ -1187,11 +1627,13 @@ def chooseEngine():
         print("*Welding Tool removed from Inventory*")
         return engine
 
+
 def choosePath2():
     path2 = ""
     while path2 != "cross" and path2 != "go around":
         path2 = input("Choose a Path [Cross] or [Go Around]: ").lower()
     return path2
+
 
 def checkPath2(chosenPath2):
     global hoursLeft
@@ -1273,17 +1715,17 @@ def timeCheck():
         return
 
 
-#intro()
 
-#name = input("What is your name?: ").lower()
-name = "Daniel"
+intro()
 
-#intro2()
-#part1()
-#rover1()
-#rover2()
-#rover3()
-#bunker1()
+name = input("What is your name?: ").lower()
+#name = "Daniel"
+
+intro2()
+part1()
+rover1()
+rover2()
+rover3()
+bunker1()
 bunker2()
-#leoFormula()
 
