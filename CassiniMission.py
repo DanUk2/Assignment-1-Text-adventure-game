@@ -1,15 +1,21 @@
 # The Cassini mission
-# Version 5
+# Version 6
 # Daniel Hitchcock
-# 26/01/2019
+# 27/01/2019
 import time
 import random
 Gameover = False
-inv = ["key card", "laser cutter", "welding tool", "wrench", "blowtorch", "gps"]
+inv = ["laser cutter", "blowtorch", "welding tool", "wrench", "gps"]
 global hoursLeft
 hoursLeft = 5
 correctFormula = {"Magnesium" : 2, "Barium" : 1, "Sodium Chloride" : 1, "Phosphorous" : 3}
 usrFormula = {"Magnesium" : 0, "Barium" : 0, "Sodium Chloride" : 0, "Phosphorous" : 0}
+global choicePath3
+choicePath3 = 1
+global leoChoice
+global pandoraChoice
+leoChoice = 1
+pandoraChoice = 0
 
 def intro():
     print("*recording started*")
@@ -95,7 +101,7 @@ def inv1():
         item = input("Choose an Item: ").lower()
     if item != "wrench":
         print()
-        print("Leo: Thats not a wrench")
+        print("Leo: That's not a wrench")
         print()
         inv1()
     elif item == "wrench":
@@ -291,6 +297,7 @@ def rover3():
         return
     timeCheck()
 
+
 def bunker1():
     print("Pandora: I see the bunker up ahead!")
     print()
@@ -374,7 +381,7 @@ def bunker1():
     print("Leo: Sir are you sure that's a good idea?")
     print()
     time.sleep(2)
-    print("Apollo: Don't argue with me Leo! Follow my order")
+    print("Apollo: Don't argue with me Leo! Follow my orders")
     time.sleep(2)
     print()
     print("Leo: Yes Sir!")
@@ -385,13 +392,413 @@ def bunker1():
     print()
     choice3 = choosePath3()
     checkPath3(choice3)
+    bunker2()
+
+
+def bunker2():
+    time.sleep(2)
+    print("*Apollo tackles Leo*")
+    print()
+    time.sleep(2)
+    print("Leo: AHHH!")
+    print()
+    time.sleep(2)
+    print("Pandora: LEO!")
+    time.sleep(1)
+    print(" IM COMING!")
+    time.sleep(1)
+    print()
+    print("*Pandora runs to help Leo*")
+    time.sleep(2)
+    print()
+    print("Pandora: GET OFF HIM!")
+    print()
+    time.sleep(1)
+    print("*Apollo hits Pandora across the room*")
+    print()
+    time.sleep(2)
+    print("Pandora: Uh!")
+    print()
+    time.sleep(1)
+    print("Leo:", name.upper(), "GET HIM OFF ME!")
+    print()
+    time.sleep(2)
+    print("Pandora: Help me up", name, "!")
+    time.sleep(3)
+    print()
+    chooseSave()
+
+def bunkerLeo():
+    print("*You slam the door shut*")
+    time.sleep(2)
+    print()
+    item2()
+    print()
+    print("*Leo welds the door shut*")
+    print()
+    time.sleep(2)
+    print("Leo: That should hold them for now")
+    time.sleep(2)
+    print(" What the fuck happened back there", name, "!?")
+    time.sleep(2)
+    if choicePath3 == 2:
+        print()
+        print("Leo: I need to tell you something")
+        time.sleep(2)
+        print(" While you were gone we found out that we're all infected")
+        time.sleep(2)
+        print(" From the moment we stepped foot on this goddamn planet")
+        time.sleep(3)
+        print(" Contact with a host just speeds up the infection")
+        time.sleep(2)
+        print(" In a matter of time we'll turn into those things")
+        time.sleep(2)
+        print(" Pandora found the formula for the cure but..")
+        time.sleep(2)
+        print(" She had it on her and now shes gone")
+        time.sleep(2)
+        print(" So what do we do now?")
+        endingLeo1()
+    elif choicePath3 == 1:
+        print()
+        print("Leo: Do you remember the formula for the cure?!")
+        time.sleep(2)
+        print(" Doesn't matter, we dont have time")
+        time.sleep(2)
+        print(" get over there and think of something")
+        time.sleep(2)
+        leoFormula()
+
+
+def leoFormula():
+    print()
+    print("[Add the correct number of chemicals in order]")
+    print()
+    usrFormula["Magnesium"] = 0
+    usrFormula["Barium"] = 0
+    usrFormula["Sodium Chloride"] = 0
+    usrFormula["Phosphorous"] = 0
+    print(usrFormula)
+    print()
+    mag = int(input("Magnesium: "))
+    usrFormula["Magnesium"] += mag
+    print(usrFormula)
+    print()
+    bar = int(input("Barium: "))
+    usrFormula["Barium"] += bar
+    print(usrFormula)
+    print()
+    sodium = int(input("Sodium Chloride: "))
+    usrFormula["Sodium Chloride"] += sodium
+    print(usrFormula)
+    print()
+    phos = int(input("Phosphorous: "))
+    usrFormula["Phosphorous"] += phos
+    print(usrFormula)
+    if usrFormula == correctFormula:
+        print()
+        print("[Cure Successful]")
+        print()
+        time.sleep(2)
+        print("Leo: Oh my god you did it!")
+        time.sleep(2)
+        print(" Wait, there's only enough for one cure?")
+        time.sleep(2)
+        if leoChoice == 1:
+            print()
+            print("[Leo remembered your decision]")
+            time.sleep(2)
+            print()
+            print("Leo: I need to tell you something " + name)
+            time.sleep(2)
+            print(" I knew what was waiting for us on Titan")
+            time.sleep(2)
+            print(" We all did, apart from you")
+            time.sleep(2)
+            print(" Apollo told us about the virus outbreak in the lab")
+            time.sleep(2)
+            print(" He promised Pandora and I a lot of money if we helped him")
+            time.sleep(2)
+            print(" He told us he didn't want you to know")
+            time.sleep(2)
+            print(" Probably because he knew you'd say no")
+            time.sleep(2)
+            print(" And we really needed you")
+            time.sleep(3)
+            print(" Take the cure " + name)
+            time.sleep(2)
+            print(" We dragged you into this, its only fair if you make it out")
+            time.sleep(4)
+            print()
+            print("*You use the cure*")
+            endingLeo2()
+        elif leoChoice == 0:
+            leoAttack()
+    else:
+        print()
+        print("[Cure Failed]")
+        print()
+        tryAgain = ""
+        while tryAgain != "yes" and tryAgain != "no":
+            tryAgain = input("Try Again? [Yes] or [No]: ")
+        if tryAgain == "yes":
+            leoFormula()
+        elif tryAgain == "no":
+            print()
+            print("Leo: Looks like were stuck here " + name)
+            time.sleep(2)
+            print(" So what do we do now?")
+            endingLeo1()
+    return
+
+
+
+def leoAttack():
+    print()
+    print("Leo: Give me the cure " + name)
+    time.sleep(2)
+    print(" I don't plan on dying here today")
+    print()
+    time.sleep(1)
+    giveCure = ""
+    while giveCure != "no":
+        giveCure = input("Give him the cure? [No]: ").lower()
+    print()
+    time.sleep(1)
+    print("Leo: I SAID GIVE ME THE CURE", name.upper(), "!")
+    print()
+    giveCure2 = ""
+    while giveCure2 != "no":
+        giveCure2 = input("Give him the cure? [No]: ").lower()
+    print()
+    time.sleep(1)
+    print("Leo: ARGH!")
+    print()
+    time.sleep(1)
+    print("*Leo pushes you to the ground*")
+    print()
+    time.sleep(2)
+    print("Leo: I wont ask again " + name)
+    time.sleep(2)
+    print()
+    chooseWeapon()
+    print()
+    time.sleep(2)
+    print("Leo: AAAAAAAAAAAAH!!")
+    print()
+    time.sleep(1)
+    print("Leo: IT BURNS, IT BURNS!")
+    time.sleep(2)
+    print("*Leo drops dead*")
+    time.sleep(2)
+    print()
+    print("*You use the cure*")
+    endingLeo3()
+
+def endingLeo1():
+    print()
+    time.sleep(3)
+    print("*Still recording*")
+    print()
+    time.sleep(3)
+    print("*Sigh*")
+    time.sleep(1)
+    print("That's how it happened")
+    time.sleep(2)
+    print("After that Leo turned first")
+    time.sleep(2)
+    print("Its only a matter of time until I do")
+    time.sleep(2)
+    print("Whoever finds this message, learn from our mistake")
+    time.sleep(2)
+    print("STAY AWAY FROM TITAN!")
+    time.sleep(2)
+    print("My nam-")
+    time.sleep(1)
+    print("My name is", name[:-3], "...")
+    time.sleep(2)
+    print("AHHHHH!")
+    time.sleep(2)
+    print()
+    print("*Recording Stopped*")
+    print()
+    time.sleep(2)
+    print("[GAME OVER]")
+    print()
+    time.sleep(2)
+    print("Ending Grade: [D]")
+
+def endingLeo2():
+    print()
+    time.sleep(3)
+    print("*Still recording*")
+    print()
+    time.sleep(3)
+    print("*Sigh*")
+    time.sleep(2)
+    print("That's how it happened")
+    time.sleep(2)
+    print("After that Leo sacrificed himself to hold them off")
+    time.sleep(3)
+    print("The cure has fought back the virus for now")
+    time.sleep(3)
+    print("However food supplies ran out")
+    time.sleep(2)
+    print("I have left the formula to the cure attached to this message")
+    time.sleep(3)
+    print("I hope you find this message before you send the next team here")
+    time.sleep(3)
+    print("It's too late for us")
+    time.sleep(2)
+    print("My name is " + name)
+    time.sleep(3)
+    print("Last survivor of the Cassini mission")
+    time.sleep(2)
+    print()
+    print("*Recording Stopped*")
+    print()
+    time.sleep(2)
+    print("[GAME OVER]")
+    print()
+    time.sleep(2)
+    print("Ending Grade: [A]")
+
+def endingLeo3():
+    print()
+    time.sleep(3)
+    print("*Still recording*")
+    print()
+    time.sleep(3)
+    print("*Sigh*")
+    time.sleep(2)
+    print("That's how it happened")
+    time.sleep(2)
+    print("The cure has fought back the virus for now")
+    time.sleep(3)
+    print("However food supplies ran out")
+    time.sleep(2)
+    print("I have left the formula to the cure attached to this message")
+    time.sleep(3)
+    print("I hope you find this message before you send the next team here")
+    time.sleep(3)
+    print("It's too late for us")
+    time.sleep(2)
+    print("My name is " + name)
+    time.sleep(3)
+    print("Last survivor of the Cassini mission")
+    time.sleep(2)
+    print()
+    print("*Recording Stopped*")
+    print()
+    time.sleep(2)
+    print("[GAME OVER]")
+    print()
+    time.sleep(2)
+    print("Ending Grade: [B]")
+
+
+def chooseWeapon():
+    attack = ""
+    print(inv)
+    print()
+    while attack != "laser cutter" and attack != "blowtorch":
+        attack = input("Choose a Weapon [Laser Cutter] or [Blowtorch]: ")
+    if attack == "laser cutter":
+        if attack in inv:
+            print()
+            print("*You shine the laser into his eyes*")
+        else:
+            print()
+            print("*You don't have this item*")
+            chooseWeapon()
+    elif attack == "blowtorch":
+        print()
+        print("*You melt his face*")
+    else:
+        print()
+        print("*That wont work here*")
+
+def item2():
+    if "welding tool" in inv:
+        print("Leo: Hand me your Welding Tool quick!")
+        print()
+        time.sleep(1)
+        print(inv)
+        print()
+        welder = ""
+        while welder not in inv:
+            welder = input("Choose an Item: ").lower()
+        if welder != "welding tool":
+            print()
+            print("Leo: Stop playing around!")
+            print()
+            item2()
+        elif welder == "welding tool":
+            print()
+            print("*Welding Tool removed from inventory*")
+            inv.remove("welding tool")
+            print(inv)
+            return welder
+    else:
+        print("Leo: Move out the way!")
+        time.sleep(1)
+        print(" Im going to weld the door shut")
+
+def bunkerPandora():
+    print("*You slam the door shut*")
+
+def chooseSave():
+    save = ""
+    while save != "leo" and save != "pandora":
+        save = input("Who do you want to save? [Leo] or [Pandora]").lower()
+    if save == "leo":
+        print()
+        print("*You push Apollo off Leo*")
+        print()
+        time.sleep(2)
+        print("Pandora: NOOOOOO!")
+        print()
+        time.sleep(1)
+        print("Leo: PANDORA!")
+        time.sleep(1)
+        print()
+        print("*Apollo infects Pandora*")
+        time.sleep(2)
+        print()
+        print("Leo: QUICK SHUT THE DOOR!")
+        time.sleep(2)
+        print()
+        bunkerLeo()
+    elif save == "pandora":
+        print()
+        print("*You help Pandora up*")
+        print()
+        time.sleep(2)
+        print("Leo: AHHHHHH!")
+        print()
+        time.sleep(1)
+        print("Pandora: LEO!")
+        time.sleep(1)
+        print()
+        print("*Apollo infects Leo*")
+        time.sleep(2)
+        print()
+        print("Pandora: QUICK SHUT THE DOOR!")
+        time.sleep(2)
+        print()
+        bunkerPandora()
+
 def choosePath3():
     path3 = ""
     while path3 != "stay" and path3 != "go":
         path3 = input("Choose an option [Stay] or [Go]: ").lower()
     return path3
+
+
 def checkPath3(chosenPath3):
+    global choicePath3
     if chosenPath3 == "stay":
+        choicePath3 = 1
         print()
         print("Apollo: Okay you wait and help the others")
         print()
@@ -421,10 +828,13 @@ def checkPath3(chosenPath3):
         if read == "yes":
             document()
             print()
-            time.sleep(2)
-            print("Pandora: We might need that formula")
-            time.sleep(2)
-            print(" Remember the recipe " + name)
+        time.sleep(2)
+        print("Pandora: With this information we can create the cure!")
+        time.sleep(2)
+        print(" All of the chemicals are other here" + name)
+        time.sleep(2)
+        print()
+        print("Leo: Okay you two start working on the cure, I'll keep an eye out")
         print()
         time.sleep(1)
         print("*Apollo screams in agony*")
@@ -450,19 +860,9 @@ def checkPath3(chosenPath3):
         print()
         print("Pandora: LEO DON'T GO NEAR HIM!")
         print()
-        time.sleep(2)
-        print("*Apollo leaps onto Leo and infects him*")
-        print()
-        time.sleep(2)
-        print("Leo: AHHHHH!")
-        print()
-        time.sleep(2)
-        print("Pandora: HE'S INFECTED! QUICK SHUT THE DOOR")
-        time.sleep(3)
-        print()
-        print("*Apollo screams and starts sprinting towards you*")
         return
     elif chosenPath3 == "go":
+        choicePath3 = 2
         print()
         print("Apollo: Okay come with me quick")
         time.sleep(2)
@@ -529,17 +929,6 @@ def checkPath3(chosenPath3):
             print("Leo: Apollo?")
             print()
             time.sleep(1)
-            print("*Apollo leaps onto Leo and infects him*")
-            time.sleep(2)
-            print()
-            print("Leo: AHHHHHH!")
-            print()
-            time.sleep(1)
-            print("Pandora: HE'S INFECTED! QUICK SHUT THE DOOR")
-            time.sleep(2)
-            print()
-            print("*Apollo screams and starts sprinting towards you*")
-            time.sleep(2)
         elif run == "stay":
             print()
             time.sleep(2)
@@ -665,11 +1054,17 @@ def checkPath(chosenPath):
 def chooseQuicksand():
     quickSand = ""
     global hoursLeft
+    global leoChoice
+    global pandoraChoice
     while quickSand != "rev" and quickSand != "pull":
         quickSand = input("Choose a Way out [Rev] or [Pull]").lower()
     if quickSand == "rev":
+        leoChoice = 1
         hoursLeft -= 1
         print()
+        print("[Leo will remember that]")
+        print()
+        time.sleep(2)
         print("Apollo: Are you sure?")
         time.sleep(2)
         print(" I hope you know what you're doing")
@@ -721,7 +1116,11 @@ def chooseQuicksand():
 
     else:
         hoursLeft -= 2
+        pandoraChoice = 1
         print()
+        print("[Pandora will remember that]")
+        print()
+        time.sleep(2)
         print("Apollo: Are you sure about this?")
         time.sleep(2)
         print(" This will take too long")
@@ -884,4 +1283,7 @@ name = "Daniel"
 #rover1()
 #rover2()
 #rover3()
-bunker1()
+#bunker1()
+bunker2()
+#leoFormula()
+
